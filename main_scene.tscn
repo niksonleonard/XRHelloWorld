@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpn311jb2a55n"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_05g4n"]
+
+[sub_resource type="Sky" id="Sky_8jtk5"]
+sky_material = SubResource("ProceduralSkyMaterial_05g4n")
+
+[sub_resource type="Environment" id="Environment_2eoa3"]
+background_mode = 2
+sky = SubResource("Sky_8jtk5")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_adijh"]
+size = Vector2(10, 10)
+
+[node name="MainScene" type="Node3D"]
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8032, 0)
+
+[node name="XRController3D" type="XRController3D" parent="XROrigin3D"]
+tracker = &"left_hand"
+pose = &"aim"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2eoa3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_adijh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.701108, 0.713055, 0, -0.713055, 0.701108, 0, 1.28606, 0)
